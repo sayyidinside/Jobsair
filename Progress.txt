@@ -1,4 +1,6 @@
 Progress 1 (27 November 2020):
 - Penentuan FrameWork : Laravel
-- Pembuatan repository
 - Warna : A6DDFC
+- Penginstallan git
+- Pembuatan akun github
+- Pembuatan repository
