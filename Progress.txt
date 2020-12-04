@@ -4,3 +4,11 @@ Progress 1 (27 November 2020):
 - Penginstallan git
 - Pembuatan akun github
 - Pembuatan repository
+
+Progress 2 (4 Desember 2020):
+- Ganti FrameWork : Flask / Django
+- Tamplate sudah ada
+- Pembagain tugas : Erdi (front-end), sayyid (back-end), toriq (keduanya)
+- Sign-in ada pemilihan (perusahaan , pekerja)
+- Menu : (Home, Joblist, company)
+- Kurang sisi Admin
