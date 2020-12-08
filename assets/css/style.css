@@ -102,6 +102,12 @@ a.filled-button:hover {
 	font-size: 62px;
 	text-transform: uppercase;
 	letter-spacing: 5px;
+} 
+.page-heading .text-content h2 em {
+	color: red; 
+	font-style: normal;
+	font-size: 62px;
+	letter-spacing: 5px;
 }
 
 #preloader {
