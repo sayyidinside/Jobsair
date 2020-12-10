@@ -47,12 +47,12 @@ ul.social-icons li a {
 }
 
 ul.social-icons li a:hover {
-	background-color: #f33f3f;
+	background-color: #4676BE;
 	color: #fff;
 }
 
 a.filled-button {
-	background-color: #f33f3f;
+	background-color: #4676BE;
 	color: #fff;
 	font-size: 14px;
 	text-transform: capitalize;
@@ -71,7 +71,7 @@ a.filled-button:hover {
 .section-heading {
 	text-align: left;
 	margin-bottom: 60px;
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #A6DDFC, 100%;
 }
 
 .section-heading h2 {
@@ -90,7 +90,7 @@ a.filled-button:hover {
 }
 
 .page-heading .text-content h4 {
-	color: #f33f3f;
+	color: #4676BE;
 	font-size: 22px;
 	text-transform: uppercase;
 	font-weight: 700;
@@ -98,13 +98,13 @@ a.filled-button:hover {
 }
 
 .page-heading .text-content h2 {
-	color: #fff;
+	color: #4676BE ;
 	font-size: 62px;
 	text-transform: uppercase;
 	letter-spacing: 5px;
 } 
 .page-heading .text-content h2 em {
-	color: red; 
+	color: #4676BE, 100%; 
 	font-style: normal;
 	font-size: 62px;
 	letter-spacing: 5px;
@@ -112,7 +112,7 @@ a.filled-button:hover {
 
 #preloader {
   overflow: hidden;
-  background: #f33f3f;
+  background: #4676BE, 100%;
   left: 0;
   right: 0;
   top: 0;
@@ -196,7 +196,7 @@ header {
 	z-index: 99999;
 	width: 100%;
 	height: 80px;
-	background-color: #232323;
+	background-color: #4676BE;
 	-webkit-transition: all 0.3s ease-in-out 0s;
     -moz-transition: all 0.3s ease-in-out 0s;
     -o-transition: all 0.3s ease-in-out 0s;
@@ -211,21 +211,24 @@ header .navbar {
 .background-header {
 	top: 0;
 	position: fixed;
-	background-color: #fff!important;
+	background-color: #A6DDFC!important;
 	box-shadow: 0px 1px 10px rgba(0,0,0,0.1);
 }
 .background-header .navbar-brand h2 {
-	color: #121212!important;
+	color: #121212;!important;
 }
 .background-header .navbar-nav a.nav-link {
-	color: #1e1e1e!important;
+	color: #1e1e1e;!important;
 }
 .background-header .navbar-nav .nav-link:hover,
 .background-header .navbar-nav .active>.nav-link,
 .background-header .navbar-nav .nav-link.active,
 .background-header .navbar-nav .nav-link.show,
 .background-header .navbar-nav .show>.nav-link {
-	color: #f33f3f!important;
+	color: #A6DDFC;!important;
+}
+.background-header .navbar .navbar-brand h2 em {
+	color: #4676BE;!important;
 }
 .navbar .navbar-brand {
 	float: 	left;
@@ -244,7 +247,7 @@ header .navbar {
 }
 .navbar .navbar-brand h2 em {
 	font-style: normal;
-	color: #f33f3f;
+	color: #A6DDFC;
 }
 #navbarResponsive {
 	z-index: 999;
@@ -271,7 +274,7 @@ header .navbar {
 .navbar .navbar-nav .show>.nav-link {
 	color: #fff;
 	padding-bottom: 25px;
-	border-bottom: 3px solid #f33f3f;
+	border-bottom: 3px solid #4676BE;
 }
 .navbar .navbar-toggler-icon {
 	background-image: none;
@@ -288,7 +291,7 @@ header .navbar {
 }
 .navbar .navbar-toggler-icon:after {
 	content: '\f0c9';
-	color: #f33f3f;
+	color: #4676BE;
 	font-size: 18px;
 	line-height: 26px;
 	font-family: 'FontAwesome';
@@ -304,15 +307,14 @@ header .navbar {
 }
 
 .banner-item-01 {
-	padding: 300px 0px;
-	background-image: url(../images/slider-image-1-1920x600.jpg);
+	padding: 200px 0px;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
 }
 
 .banner-item-02 {
-	padding: 300px 0px;
+	padding: 200px 0px;
 	background-image: url(../images/slider-image-2-1920x600.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -320,7 +322,7 @@ header .navbar {
 }
 
 .banner-item-03 {
-	padding: 300px 0px;
+	padding: 200px 0px;
 	background-image: url(../images/slider-image-3-1920x600.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -328,7 +330,7 @@ header .navbar {
 }
 
 .banner .banner-item {
-	max-height: 600px;
+	max-height: 400px;
 }
 
 .banner .text-content {
@@ -404,8 +406,9 @@ header .navbar {
 }
 
 .product-item {
-	border: 1px solid #eee;
+	border: 10px solid #4676BE;
 	margin-bottom: 30px;
+	border-radius: 20px;
 }
 
 .product-item .down-content {
@@ -487,8 +490,9 @@ header .navbar {
 }
 
 .best-features .container .row {
-	border-bottom: 1px solid #eee;
+	border-bottom: 6px solid #eee;
 	padding-bottom: 60px;
+	
 }
 
 .best-features img {
@@ -896,9 +900,11 @@ footer .inner-content p a {
 	height: 44px;
 	display: inline-block;
 	line-height: 42px;
-	border: 1px solid #eee;
+	border: 5px solid #eee;
 	border-radius: 0px;
 	margin-bottom: 30px;
+	
+border-radius: 40px;
 }
 
 .contact-form select:focus,
