@@ -315,7 +315,7 @@ header .navbar {
 
 .banner-item-02 {
 	padding: 200px 0px;
-	background-image: url(../images/slider-image-2-1920x600.jpg);
+	
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -323,7 +323,6 @@ header .navbar {
 
 .banner-item-03 {
 	padding: 200px 0px;
-	background-image: url(../images/slider-image-3-1920x600.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -891,6 +890,7 @@ footer .inner-content p a {
 
 .send-message {
 	margin-top: 100px;
+	
 }
 
 .contact-form select,
