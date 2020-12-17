@@ -6,7 +6,10 @@ __pycache__
 # Env
 .env
 myvenv/
+env/
 venv/
+
+
 
 # Static folder at project root
 /static/
