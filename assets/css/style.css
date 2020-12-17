@@ -1,5 +1,6 @@
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif,#eeeeee;
+  background: #A6DDFC; 
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -211,7 +212,7 @@ header .navbar {
 .background-header {
 	top: 0;
 	position: fixed;
-	background-color: #A6DDFC!important;
+	background-color: #000000!important;
 	box-shadow: 0px 1px 10px rgba(0,0,0,0.1);
 }
 .background-header .navbar-brand h2 {
@@ -405,7 +406,8 @@ header .navbar {
 }
 
 .product-item {
-	border: 10px solid #4676BE;
+	border: 10px solid #A6DDFC;
+	background: #eeeeee;
 	margin-bottom: 30px;
 	border-radius: 20px;
 }
