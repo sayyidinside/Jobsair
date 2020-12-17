@@ -15,7 +15,8 @@ class Post(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     email = models.EmailField()
-    address = models.TextField()
+    address = models.TextField(null=True)
+    comp_link = models.URLField(null=True)
 
     def publish(self):
         self.published_date = timezone.now()
