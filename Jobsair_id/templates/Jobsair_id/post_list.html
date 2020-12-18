@@ -61,8 +61,8 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
                     
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="/team.html">Team</a>
-                      <a class="dropdown-item" href="/testimonials.html">Testimonials</a>
+                      <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                      <a class="dropdown-item" href="/testimonials.html">Register</a>
                       <a class="dropdown-item" href="/terms.html">Terms</a>
                     </div>
                 </li>
@@ -75,9 +75,16 @@
     </header>
 
     <!-- Page Content -->
-    {% for post in posts %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+      <div class="row">
         <div class="col-md-9">
           <div class="row">
+            {% for post in posts %}
             <div class="col-md-6">
               <div class="product-item">
                 <div class="down-content">
@@ -85,17 +92,22 @@
 
                   <h6>Rp {{ post.salary }}</h6>
 
-                  <h4><small><i class="fa fa-briefcase"></i> {{ post.category }} <br> <strong><i class="fa fa-building"></i> BMI Kings Park Hospital</strong></small></h4>
+                  <h4><small><i class="fa fa-briefcase"></i> {{ post.category }} <br> <strong><i class="fa fa-building"></i> {{ post.company }}</strong></small></h4>
 
                   <small>
-                       <strong title="Posted on"><i class="fa fa-calendar"></i> {{ post.published_date }}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                       <strong title="Type"><i class="fa fa-file"></i> Contract</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                       <strong title="Posted on"><i class="fa fa-calendar"></i> {{ post.published_date | date:'d F Y' }}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                       <strong title="Type"><i class="fa fa-file"></i> Contract</strong>
+                       <br>
                        <strong title="Location"><i class="fa fa-map-marker"></i> {{ post.address }}</strong>
                   </small>
                 </div>
               </div>
             </div>
-    {% endfor %}
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
 
     <footer>
       <div class="container">
