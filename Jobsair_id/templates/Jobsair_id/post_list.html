@@ -8,18 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/assets/images/favicon.png">
+    <link rel="icon" href="{% static 'Jobsair_id/assets/images/favicon.png' %">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <title>Jobsair</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'Jobsair_id/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/owl.css">
+    <link rel="stylesheet" href="{% static 'Jobsair_id/assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'Jobsair_id/assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'Jobsair_id/assets/css/owl.css' %}">
 
   </head>
 
@@ -75,8 +75,28 @@
     </header>
 
     <!-- Page Content -->
-    
-    
+    {% for post in posts %}
+        <div class="col-md-9">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="product-item">
+                <div class="down-content">
+                  <a href="job-details.html"><h4>{{ post.title }}</h4></a>
+
+                  <h6>Rp {{ post.salary }}</h6>
+
+                  <h4><small><i class="fa fa-briefcase"></i> {{ post.category }} <br> <strong><i class="fa fa-building"></i> BMI Kings Park Hospital</strong></small></h4>
+
+                  <small>
+                       <strong title="Posted on"><i class="fa fa-calendar"></i> {{ post.published_date }}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                       <strong title="Type"><i class="fa fa-file"></i> Contract</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                       <strong title="Location"><i class="fa fa-map-marker"></i> {{ post.address }}</strong>
+                  </small>
+                </div>
+              </div>
+            </div>
+    {% endfor %}
+
     <footer>
       <div class="container">
         <div class="row">
@@ -91,12 +111,12 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'Jobsair_id/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'Jobsair_id/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
 
     <!-- Additional Scripts -->
-    <script src="/assets/js/custom.js"></script>
-    <script src="/assets/js/owl.js"></script>
+    <script src="{% static 'Jobsair_id/assets/js/custom.js' %}"></script>
+    <script src="{% static 'Jobsair_id/assets/js/owl.js' %}"></script>
   </body>
 </html>
