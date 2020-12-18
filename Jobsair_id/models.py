@@ -10,7 +10,7 @@ class Post(models.Model):
     company = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
     category = models.CharField(max_length=255, default='uncategorized')
-    salary = models.BigIntegerField(null=True)
+    salary = models.BigIntegerField(blank=True, null=True)
     job_desc = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
