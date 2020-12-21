@@ -11,8 +11,12 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'Jobsair_id/post_detail.html', {'post':post})
+    return render(request, 'Jobsair_id/post_detail.html', {'post': post})
 
 
 def login_user(request):
     return render(request, 'Jobsair_id/Login.html', {})
+
+
+def register_user(request):
+    return render(request, 'Jobsair_id/register.html', {})
