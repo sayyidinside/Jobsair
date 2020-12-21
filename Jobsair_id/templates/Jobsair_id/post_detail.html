@@ -1,0 +1,122 @@
+{% extends 'Jobsair_id/base.html' %}
+{% load static %}
+<!-- Page Content -->
+{% block content %}
+    {% if post.published_date %}
+        <div class="date">
+            {{ post.published_date }}
+        </div>
+    {% endif %}
+    <div class="page-heading about-heading header-text" style="background-image: url({% static 'Jobsair_id/assets/images/heading-6-1920x500.jpg' %});">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+              <h4>{{ post.company }}</h4>
+  
+              <h2>{{ post.title }}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="products">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9 col-sm-8">
+              <p class="lead">
+                   <i class="fa fa-map-marker"></i> {{ post.address }} &nbsp;&nbsp;
+                   <i class="fa fa-calendar"></i> {{ post.published_date | date:'d F Y' }} &nbsp;&nbsp;
+                   <i class="fa fa-file"></i> Contract &nbsp;
+                   <i class="fa fa-dollar"></i> Rp {{ post.salary }}
+              </p>
+  
+              <br>
+              <br>
+              
+              <div class="form-group">
+                <h3>Job Description.</h3>
+              </div>
+              <h7>{{ post.job_desc|linebreaksbr }}</h7>
+
+              <br>
+              <br>
+              <br>
+          </div>
+  
+          <div class="col-md-3 col-sm-4">
+            <div class="contact-form">
+              <div class="form-group">
+                <form action="mailto:{{ post.email }}">
+                  <button type="submit" class="filled-button btn-block">Apply for this job</button>
+                </form>
+              </div>
+            </div>
+
+            <div class="section">
+              <div class="section-heading">
+                <h2>Contact Details</h2>
+              </div>
+              <div class="left-content">
+                <p>
+                  <span>Name</span>
+                  <br>
+                  <strong>{{ post.author_id }}</strong>
+                </p>
+                <p>
+                  <span>Phone</span>
+                  <br>
+                  <strong>
+                    <a href="tel:123-456-789">123-456-789</a>
+                  </strong>
+                </p>
+                <p>
+                  <span>Mobile phone</span>
+                  <br>
+                  <strong>
+                    <a href="tel:456789123">456789123</a>
+                  </strong>
+                </p>
+                <p>
+                  <span>Email</span>
+                  <br>
+                  <strong>
+                    <a href="mailto:{{ post.email }}">{{ post.email }}</a>
+                  </strong>
+                </p>
+                <p>
+                  <span>Website</span>
+                  <br>
+                  <strong>
+                    <a href="{{ post.comp_link }}">{{ post.comp_link }}</a>
+                  </strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+  
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="section-heading">
+              <h2>About {{ post.company }}</h2>
+            </div>
+  
+            <p class="lead">
+                   <i class="fa fa-map-marker"></i> {{ post.address }} 
+              </p>
+  
+            <p>Looking to improve the security at your place of business? If so, we will provide you with the trained security officers and professionally licensed personnel needed for any business. From a security guard for construction site security to private event security, you can be sure to get the very best from our staff. Alternatively we provide tailor-made security guard training for your existing security staff.</p>
+            <br>
+            <p>Looking to improve the security at your place of business? If so, we will provide you with the trained security officers and professionally licensed personnel needed for any business. From a security guard for construction site security to private event security, you can be sure to get the very best from our staff. Alternatively we provide tailor-made security guard training for your existing security staff.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

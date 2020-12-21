@@ -14,7 +14,7 @@
             <div class="col-md-4">
               <div class="product-item">
                 <div class="down-content">
-                  <a href="job-details.html"><h4>{{ post.title }}</h4></a>
+                  <a href="{% url 'post_detail' pk=post.pk %}"><h4>{{ post.title }}</h4></a>
 
                   <h6>Rp {{ post.salary }}</h6>
 
