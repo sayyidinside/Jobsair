@@ -37,3 +37,7 @@ def login_user(request):
 
 def register_user(request):
     return render(request, 'Jobsair_id/register.html', {})
+
+
+def contact_us(request):
+    return render(request, 'Jobsair_id/contact-us.html', {})
