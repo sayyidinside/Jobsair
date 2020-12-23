@@ -31,3 +31,14 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Blog(models.Model):
+    author = models.CharField(max_length=50)
+    title = models.CharField(max_length=100)
+    published_date = models.DateTimeField(blank=True, null=True)
+    views = models.PositiveIntegerField(default=0)
+    content = models.TextField()
+
+    def __str__(self):
+        return self.title

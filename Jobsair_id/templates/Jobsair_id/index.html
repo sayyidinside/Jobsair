@@ -115,43 +115,23 @@
             <div class="section-heading">
               <h2>Latest blog posts</h2>
 
-              <a href="blog.html">read more <i class="fa fa-angle-right"></i></a>
+              <a href="{% url 'blog_list' %}">read more <i class="fa fa-angle-right"></i></a>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item">
-              <a href="#" class="services-item-image"><img src="{% static 'Jobsair_id/assets/images/blog-1-370x270.jpg' %}" class="img-fluid" alt=""></a>
-
-              <div class="down-content">
-                <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit hic</a></h4>
-
-                <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
+          {% for blog in blogs %}
+              <div class="col-lg-4 col-md-6">
+                <div class="service-item">
+                  <a href="{% url 'blog_detail' pk=blog.pk %}" class="services-item-image"><img src="{% static 'Jobsair_id/assets/images/blog-1-370x270.jpg' %}" class="img-fluid" alt=""></a>
+    
+                  <div class="down-content">
+                    <h4><a href="{% url 'blog_detail' pk=blog.pk %}">{{ blog.title }}</a></h4>
+    
+                    <p style="margin: 0;">  {{ blog.author }} <br>{{ blog.published_date | date:'d F Y - H:i e'}} &nbsp;&nbsp;|&nbsp;&nbsp; {{ blog.views }}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item">
-              <a href="#" class="services-item-image"><img src="{% static 'Jobsair_id/assets/images/blog-2-370x270.jpg' %}" class="img-fluid" alt=""></a>
-
-              <div class="down-content">
-                <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h4>
-
-                <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item">
-              <a href="#" class="services-item-image"><img src="{% static 'Jobsair_id/assets/images/blog-3-370x270.jpg' %}" class="img-fluid" alt=""></a>
-
-              <div class="down-content">
-                <h4><a href="#">Aperiam modi voluptatum fuga officiis cumque</a></h4>
-
-                <p style="margin: 0;"> John Doe &nbsp;&nbsp;|&nbsp;&nbsp; 12/06/2020 10:30 &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </div>
