@@ -13,6 +13,8 @@ venv/
 
 # Static folder at project root
 /static/
+vendor/
+assets/
 
 # Windows
 Thumbs.db*
