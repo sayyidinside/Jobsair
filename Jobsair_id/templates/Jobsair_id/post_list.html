@@ -7,6 +7,15 @@
     <br>
     <br>
     <div class="container">
+      {% if user.is_authenticated %}
+          <div class="contact-form">
+            <div class="form-group">
+              <form action="{% url 'post_new' %}">
+                <button type="submit" class="filled-button btn-block">Create New Job Post</button>
+              </form>
+            </div>
+          </div>
+      {% endif %}
       <div class="row">
         <div class="col-md-12">
           <div class="row">

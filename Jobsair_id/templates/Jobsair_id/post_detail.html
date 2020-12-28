@@ -48,6 +48,12 @@
           <div class="col-md-3 col-sm-4">
             <div class="contact-form">
               <div class="form-group">
+                {% if user.is_authenticated %}
+                    <form action="{% url 'post_edit' pk=post.pk %}">
+                      <button type="submit" class="filled-button btn-block">Edit</button>
+                    </form>
+                    <br>
+                {% endif %}
                 <form action="mailto:{{ post.email }}">
                   <button type="submit" class="filled-button btn-block">Apply for this job</button>
                 </form>

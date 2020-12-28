@@ -11,4 +11,6 @@ urlpatterns = [path('', views.index, name='index'),
                path('terms/', views.terms, name='terms'),
                path('login/', views.login_user, name='login'),
                path('register/', views.register_user, name='register'),
-               path('contact-us/', views.contact_us, name='contact_us'), ]
+               path('contact-us/', views.contact_us, name='contact_us'),
+               path('jobs/new/', views.post_new, name='post_new'),
+               path('post/<int:pk>/edit/', views.post_edit, name='post_edit'), ]
