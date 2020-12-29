@@ -1,10 +1,33 @@
 {% extends 'Jobsair_id/base.html' %}
+{% load static %}
+
+{% block title %} | Jobs{% endblock %}
+
 <!-- Page Content -->
 {% block content %}
-    <br>
-    <br>
-    <br>
-    <br>
+    <!-- Banner Starts Here -->
+    <div class="banner header-text">
+      <div class="owl-banner owl-carousel">
+        <div class="banner-item-01">
+          <div class="text-content">
+            <a href="{% url 'post_detail' pk=1 %}"><img src="{% static 'Jobsair_id/assets/images/slider-image-1-1920x600.png' %}" alt=""></a>
+          </div>
+        </div>
+        <div class="banner-item-02">
+          <div class="text-content">
+            <a href="{% url 'post_detail' pk=2 %}"><img src="{% static 'Jobsair_id/assets/images/slider-image-2-1920x600.png' %}" alt=""></a>
+          </div>
+        </div>
+        <div class="banner-item-03">
+          <div class="text-content">
+            <a href="{% url 'post_detail' pk=3 %}"><img src="{% static 'Jobsair_id/assets/images/slider-image-3-1920x600.png' %}" alt=""></a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
     <br>
     <div class="container">
       {% if user.is_authenticated %}
