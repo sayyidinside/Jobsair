@@ -27,13 +27,18 @@
 
                   <h6><small>Rp {{ post.salary }}</small></h6>
 
-                  <h4><small><i class="fa fa-briefcase"></i> {{ post.category }} <br> <strong><i class="fa fa-building"></i> {{ post.company }}</strong></small></h4>
+                  <h4>
+                    <small><a href="{% url 'job_category' post.category %}">
+                    <i class="fa fa-briefcase"></i> {{ post.category }} </a>
+                    <br>
+                    <strong><i class="fa fa-building"></i> {{ post.company }}</strong></small>
+                  </h4>
 
                   <small>
                        <strong title="Posted on"><i class="fa fa-calendar"></i> {{ post.published_date | date:'d F Y' }}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                        <strong title="Type"><i class="fa fa-file"></i> Contract</strong>
                        <br>
-                       <strong title="Location"><i class="fa fa-map-marker"></i> {{ post.address }}</strong>
+                       <strong title="Location"><i class="fa fa-map-marker"></i> {{ post.address|truncatechars:30 }}</strong>
                   </small>
                 </div>
               </div>
