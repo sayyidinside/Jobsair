@@ -31,9 +31,10 @@
     <div class="card-body register-card-body">
       <p class="login-box-msg">Register a new membership</p>
 
-      <form action="../../index.html" method="post">
+      <form method="post">
+        {% csrf_token %}
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Full name">
+          {{ form.username }}
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fa fa-user"></span>
@@ -41,7 +42,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          {{ form.email }}
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fa fa-envelope"></span>
@@ -49,7 +50,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          {{ form.password1 }}
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fa fa-lock"></span>
@@ -57,7 +58,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Retype password">
+          {{ form.password2 }}
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fa fa-lock"></span>
@@ -67,7 +68,7 @@
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
-              <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+              {{ form.check }}
               <label for="agreeTerms">
                I agree to the <a href="#">terms</a>
               </label>

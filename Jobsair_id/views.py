@@ -1,7 +1,8 @@
+from django.contrib import messages
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Blog, Category
-from .forms import PostForm, BlogForm
+from .forms import PostForm, BlogForm, RegisterForm
 
 
 # Create your views here.
@@ -121,7 +122,15 @@ def login_user(request):
 
 
 def register_user(request):
-    return render(request, 'Jobsair_id/register.html', {})
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.cleaned_data.get('username')
+            messages.info(request, 'Account ' + user + ' has been created successfully')
+            return redirect('login')
+    form = RegisterForm()
+    return render(request, 'Jobsair_id/register.html', {'form': form})
 
 
 def contact_us(request):

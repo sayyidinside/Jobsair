@@ -1,5 +1,7 @@
 from django import forms
 from .models import Post, Blog, Category
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 
 # Dynamic category
@@ -31,3 +33,23 @@ class BlogForm(forms.ModelForm):
                    'title': forms.TextInput(attrs={'class': 'form-control'}),
                    'tag_line': forms.TextInput(attrs={'class': 'form-control'}),
                    'content': forms.Textarea(attrs={'class': 'form-control'}), }
+
+
+class RegisterForm(UserCreationForm):
+    password1 = forms.CharField(
+        label="Password",
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}),)
+    password2 = forms.CharField(
+        label="Confirm password",
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Retype Password'}),)
+    check = forms.BooleanField(
+        required=True,
+        widget=forms.CheckboxInput(attrs={'id': 'agreeTerms', 'name': 'terms', 'value': 'agree'}),)
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2', 'check']
+        widgets = {'username': forms.TextInput(
+                   attrs={'class': 'form-control', 'placeholder': 'Full Name'}),
+                   'email': forms.EmailInput(
+                   attrs={'class': 'form-control', 'placeholder': 'Email'}), }
