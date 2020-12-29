@@ -79,141 +79,162 @@
     {% endfor %}
 
 
-    <div class="best-features">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>About Us</h2>
+      <div class="best-features">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-heading">
+                <h2>About Us</h2>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="left-content">
-              <p><a href="{% url 'index' %}">Jobsair.id</a> Merupakan website yang bertujuan membantu 
-                para pencari kerja untuk dengan mudah menemukan kesempatan mereka didunia pekerjaan, 
-                dibantu dengan fitur pencarian, para pencari kerja dapat menemukan segala jenis bidang pekerjaan, 
-                tingkat/jabatan, dan lain –lain. Selain para pencari kerja, pihak perusahaan juga dapat memposting 
-                lowongan pekerjaan yang mereka butuhkan sesuai kriteria yang diinginkan.  Sehingga para pencari kerja
-                dapat menemukan pekerjaan sesuai bidangnya dan pihak perusahaan dapat menemukan tenaga kerja sesuai
-                 kriteria yang sedang dibutuhkan. 
-              </p>
-              <ul class="featured-list">
-                <li><a href="#">Pengalaman </a></li>
-                <li><a href="#">Keterampilan </a></li>
-                <li><a href="#">Disiplin </a></li>
-                <li><a href="#">Kerja Keras</a></li>
-              </ul>
-              <a href="{% url 'about_us' %}" class="filled-button">Read More</a>
+            <div class="col-md-6">
+              <div class="left-content">
+                <p><a href="{% url 'index' %}">Jobsair.id</a> Merupakan website yang bertujuan membantu 
+                  para pencari kerja untuk dengan mudah menemukan kesempatan mereka didunia pekerjaan, 
+                  dibantu dengan fitur pencarian, para pencari kerja dapat menemukan segala jenis bidang pekerjaan, 
+                  tingkat/jabatan, dan lain –lain. Selain para pencari kerja, pihak perusahaan juga dapat memposting 
+                  lowongan pekerjaan yang mereka butuhkan sesuai kriteria yang diinginkan.  Sehingga para pencari kerja
+                  dapat menemukan pekerjaan sesuai bidangnya dan pihak perusahaan dapat menemukan tenaga kerja sesuai
+                   kriteria yang sedang dibutuhkan. 
+                </p>
+                <ul class="featured-list">
+                  <li><a href="#">Pengalaman </a></li>
+                  <li><a href="#">Keterampilan </a></li>
+                  <li><a href="#">Disiplin </a></li>
+                  <li><a href="#">Kerja Keras</a></li>
+                </ul>
+                <a href="{% url 'about_us' %}" class="filled-button">Read More</a>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="right-image">
-              <img src="{% static 'Jobsair_id/assets/images/about-1-570x350.jpg' %}" alt="">
+            <div class="col-md-6">
+              <div class="right-image">
+                <img src="{% static 'Jobsair_id/assets/images/about-1-570x350.jpg' %}" alt="">
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="services" style="background-image: url({% static 'Jobsair_id/assets/images/other-image-fullscren-1-1920x900.jpg' %});" >
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>Latest blog posts</h2>
-
-              <a href="{% url 'blog_list' %}">read more <i class="fa fa-angle-right"></i></a>
+  
+      <div class="services" style="background-image: url({% static 'Jobsair_id/assets/images/other-image-fullscren-1-1920x900.jpg' %});" >
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-heading">
+                <h2>Latest blog posts</h2>
+  
+                <a href="{% url 'blog_list' %}">read more <i class="fa fa-angle-right"></i></a>
+              </div>
             </div>
+  
+            {% for blog in blogs %}
+                <div class="col-lg-4 col-md-6">
+                  <div class="service-item">
+                    <a href="{% url 'blog_detail' pk=blog.pk %}" class="services-item-image"><img src="{% static 'Jobsair_id/assets/images/blog-1-370x270.jpg' %}" class="img-fluid" alt=""></a>
+      
+                    <div class="down-content">
+                      <h4><a href="{% url 'blog_detail' pk=blog.pk %}">{{ blog.title }}</a></h4>
+      
+                      <p style="margin: 0;">  {{ blog.author }} <br>{{ blog.published_date | date:'d F Y - H:i e'}} &nbsp;&nbsp;|&nbsp;&nbsp; {{ blog.views }}</p>
+                    </div>
+                  </div>
+                </div>
+            {% endfor %}
           </div>
-
-          {% for blog in blogs %}
-              <div class="col-lg-4 col-md-6">
+        </div>
+      </div>
+  
+      <div class="happy-clients">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-heading">
+                <h2>Happy Clients</h2>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="owl-clients owl-carousel text-center">
                 <div class="service-item">
-                  <a href="{% url 'blog_detail' pk=blog.pk %}" class="services-item-image"><img src="{% static 'Jobsair_id/assets/images/blog-1-370x270.jpg' %}" class="img-fluid" alt=""></a>
-    
+                  <div class="icon">
+                    <i class="fa fa-user"></i>
+                  </div>
                   <div class="down-content">
-                    <h4><a href="{% url 'blog_detail' pk=blog.pk %}">{{ blog.title }}</a></h4>
-    
-                    <p style="margin: 0;">  {{ blog.author }} <br>{{ blog.published_date | date:'d F Y - H:i e'}} &nbsp;&nbsp;|&nbsp;&nbsp; {{ blog.views }}</p>
+                    <h4>John Doe</h4>
+                    <p class="n-m"><em>"It's perfect for any fresh graduate to get some experience for jobs, which u can 
+                      find easily in here, in <a href="{% url 'index' %}">Jobsair.id</a>
+                    </em></p>
+                  </div>
+                </div>
+                
+                <div class="service-item">
+                  <div class="icon">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <div class="down-content">
+                    <h4>Jane Smith</h4>
+                    <p class="n-m"><em>"it's good to me as freshgraduate, so i can look for better job as 
+                      suitable to me for the job and for the wages"</em></p>
+                  </div>
+                </div>
+                
+                <div class="service-item">
+                  <div class="icon">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <div class="down-content">
+                    <h4>Antony Davis</h4>
+                    <p class="n-m"><em>"This website give me some good perspective about seeking some empployer, so i can do it with online state, dont have to go to office again "</em></p>
+                  </div>
+                </div>
+                
+                <div class="service-item">
+                  <div class="icon">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <div class="down-content">
+                    <h4>Fulan </h4>
+                    <p class="n-m"><em>"Melamar kerja jadi makin cepat dan mudah, keren"</em></p>
+                  </div>
+                </div>
+                
+                <div class="service-item">
+                  <div class="icon">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <div class="down-content">
+                    <h4>Syafiq </h4>
+                    <p class="n-m"><em>"Cari kerja jadi makin gampang lewat website ini, keren - keren"</em></p>
+                  </div>
+                </div>
+                
+                <div class="service-item">
+                  <div class="icon">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <div class="down-content">
+                    <h4>Firdaus </h4>
+                    <p class="n-m"><em>"Semakin mudah untuk mencari beberapa karyawan baru yang 
+                      mencoba apply di perusahaan kami, dan semakin mudah dalam pengapplyan nya "</em></p>
                   </div>
                 </div>
               </div>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-
-    <div class="happy-clients">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>Happy Clients</h2>
             </div>
           </div>
-          <div class="col-md-12">
-            <div class="owl-clients owl-carousel text-center">
-              <div class="service-item">
-                <div class="icon">
-                  <i class="fa fa-user"></i>
-                </div>
-                <div class="down-content">
-                  <h4>John Doe</h4>
-                  <p class="n-m"><em>"It's perfect for any fresh graduate to get some experience for jobs, which u can 
-                    find easily in here, in <a href="{% url 'index' %}">Jobsair.id</a>
-                  </em></p>
-                </div>
-              </div>
-              
-              <div class="service-item">
-                <div class="icon">
-                  <i class="fa fa-user"></i>
-                </div>
-                <div class="down-content">
-                  <h4>Jane Smith</h4>
-                  <p class="n-m"><em>"it's good to me as freshgraduate, so i can look for better job as 
-                    suitable to me for the job and for the wages"</em></p>
-                </div>
-              </div>
-              
-              <div class="service-item">
-                <div class="icon">
-                  <i class="fa fa-user"></i>
-                </div>
-                <div class="down-content">
-                  <h4>Antony Davis</h4>
-                  <p class="n-m"><em>"This website give me some good perspective about seeking some empployer, so i can do it with online state, dont have to go to office again "</em></p>
-                </div>
-              </div>
-              
-              <div class="service-item">
-                <div class="icon">
-                  <i class="fa fa-user"></i>
-                </div>
-                <div class="down-content">
-                  <h4>Fulan </h4>
-                  <p class="n-m"><em>"Melamar kerja jadi makin cepat dan mudah, keren"</em></p>
-                </div>
-              </div>
-              
-              <div class="service-item">
-                <div class="icon">
-                  <i class="fa fa-user"></i>
-                </div>
-                <div class="down-content">
-                  <h4>Syafiq </h4>
-                  <p class="n-m"><em>"Cari kerja jadi makin gampang lewat website ini, keren - keren"</em></p>
-                </div>
-              </div>
-              
-              <div class="service-item">
-                <div class="icon">
-                  <i class="fa fa-user"></i>
-                </div>
-                <div class="down-content">
-                  <h4>Firdaus </h4>
-                  <p class="n-m"><em>"Semakin mudah untuk mencari beberapa karyawan baru yang 
-                    mencoba apply di perusahaan kami, dan semakin mudah dalam pengapplyan nya "</em></p>
+        </div>
+      </div>
+  
+      <div class="call-to-action">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="inner-content">
+                <div class="row">
+                  <div class="col-md-8">
+                    <h4>Contact Us</h4>
+                    <p>Untuk informasi lebih Lanjut, silahkan hubungi kontak - kontak yang tertera di link berikut. </p>
+                  </div>
+                  <div class="col-lg-4 col-md-6 text-right">
+                    <a href="{% url 'contact_us' %}" class="filled-button">Contact Us</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -221,25 +242,5 @@
         </div>
       </div>
     </div>
-
-
-    <div class="call-to-action">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="inner-content">
-              <div class="row">
-                <div class="col-md-8">
-                  <h4>Contact Us</h4>
-                  <p>Untuk informasi lebih Lanjut, silahkan hubungi kontak - kontak yang tertera di link berikut. </p>
-                </div>
-                <div class="col-lg-4 col-md-6 text-right">
-                  <a href="{% url 'contact_us' %}" class="filled-button">Contact Us</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  </div>
 {% endblock %}
