@@ -26,11 +26,9 @@
     </div>
     <!-- Banner Ends Here -->
 
-    
+    <br>
     <div class="col-md-12">
       <div class="contact-form">
-        <div class="form-group">
-        </div>
         <div class="container">
           <div class="row">
             <div class="col-11">
@@ -47,35 +45,38 @@
       </div>
     </div>
 
-    <div class="latest-products">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>Latest Jobs</h2>
-              <a href="{% url 'post_list' %}">view more <i class="fa fa-angle-right"></i></a>
+    <br>
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Latest Jobs</h2>
+            <a href="{% url 'post_list' %}">view more <i class="fa fa-angle-right"></i></a>
+          </div>
+        </div>
+    {% for post in posts %}
+        <div class="col-md-4">
+          <div class="product-item">
+          
+            <div class="down-content">
+              <a href="{% url 'post_detail' pk=post.pk %}"><h4>{{ post.title }}</h4></a>
+              <h6><small>Rp {{ post.salary }}</small></h6>
+              <h4>
+                <small><a href="{% url 'job_category' post.category %}">
+                <i class="fa fa-briefcase"></i> {{ post.category }} </a>
+                <br>
+                <strong><i class="fa fa-building"></i> {{ post.company }}</strong></small>
+              </h4>
+              <small>
+                   <strong title="Posted on"><i class="fa fa-calendar"></i> {{ post.published_date | date:'d F Y'}}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                   <strong title="Type"><i class="fa fa-file"></i> Contract</strong> <br>
+                   <strong title="Location"><i class="fa fa-map-marker"></i> {{ post.address }}</strong>
+              </small>
             </div>
           </div>
-      {% for post in posts %}
-          <div class="col-md-4">
-            <div class="product-item">
-            
-              <div class="down-content">
-                <a href="{% url 'post_detail' pk=post.pk %}"><h4>{{ post.title }}</h4></a>
-
-                <h6><small>Rp {{ post.salary }}</small></h6>
-
-                <h4><small><i class="fa fa-briefcase"></i> {{ post.category }} <br> <strong><i class="fa fa-building"></i> {{ post.company }}</strong></small></h4>
-
-                <small>
-                     <strong title="Posted on"><i class="fa fa-calendar"></i> {{ post.published_date | date:'d F Y'}}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                     <strong title="Type"><i class="fa fa-file"></i> Contract</strong> <br>
-                     <strong title="Location"><i class="fa fa-map-marker"></i> {{ post.address }}</strong>
-                </small>
-              </div>
-            </div>
-          </div>
-      {% endfor %}
+        </div>
+    {% endfor %}
 
 
     <div class="best-features">
