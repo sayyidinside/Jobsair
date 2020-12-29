@@ -26,7 +26,7 @@
         <div class="row">
           <div class="col-md-9 col-sm-8">
               <p class="lead">
-                   <i class="fa fa-map-marker"></i> {{ post.address }} &nbsp;&nbsp;
+                   <i class="fa fa-map-marker"></i> {{ post.address|truncatechars:35 }} &nbsp;&nbsp;
                    <i class="fa fa-calendar"></i> {{ post.published_date | date:'d F Y' }} &nbsp;&nbsp;
                    <i class="fa fa-file"></i> Contract &nbsp;
                    <i class="fa fa-dollar"></i> Rp {{ post.salary }}

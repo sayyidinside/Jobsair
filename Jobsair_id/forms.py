@@ -1,5 +1,12 @@
 from django import forms
-from .models import Post, Blog
+from .models import Post, Blog, Category
+
+
+# Dynamic category
+category_list = []
+categories = Category.objects.all().values_list('name', 'name').order_by('name')
+for category in categories:
+    category_list.append(category)
 
 
 class PostForm(forms.ModelForm):
@@ -9,7 +16,7 @@ class PostForm(forms.ModelForm):
         fields = ('title', 'category', 'salary', 'job_desc', 'address',
                   'comp_link',)
         widgets = {'title': forms.TextInput(attrs={'class': 'form-control'}),
-                   'category': forms.Select(attrs={'class': 'form-control'}),
+                   'category': forms.Select(choices=category_list, attrs={'class': 'form-control'}),
                    'salary': forms.NumberInput(attrs={'class': 'form-control'}),
                    'job_desc': forms.Textarea(attrs={'class': 'form-control'}),
                    'address': forms.Textarea(attrs={'class': 'form-control'}),

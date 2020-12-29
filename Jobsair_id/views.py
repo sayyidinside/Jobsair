@@ -1,6 +1,6 @@
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Blog
+from .models import Post, Blog, Category
 from .forms import PostForm, BlogForm
 
 
@@ -126,3 +126,8 @@ def register_user(request):
 
 def contact_us(request):
     return render(request, 'Jobsair_id/contact-us.html', {})
+
+
+def job_category(request, cats):
+    categories = Post.objects.filter(category=cats)
+    return render(request, 'Jobsair_id/post_category.html', {'cats': cats, 'category': categories})
