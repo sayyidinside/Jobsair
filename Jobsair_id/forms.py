@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import Post, Blog
 
 
 class PostForm(forms.ModelForm):
@@ -8,9 +8,19 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('title', 'category', 'salary', 'job_desc', 'address',
                   'comp_link',)
-        widgets = {'title': forms.TextInput(attrs={'class': 'form-control'}), 
+        widgets = {'title': forms.TextInput(attrs={'class': 'form-control'}),
                    'category': forms.Select(attrs={'class': 'form-control'}),
-                   'salary': forms.NumberInput(attrs={'class': 'form-control'}), 
+                   'salary': forms.NumberInput(attrs={'class': 'form-control'}),
                    'job_desc': forms.Textarea(attrs={'class': 'form-control'}),
                    'address': forms.Textarea(attrs={'class': 'form-control'}),
-                   'comp_link': forms.URLInput(attrs={'class': 'form-control'}),}
+                   'comp_link': forms.URLInput(attrs={'class': 'form-control'}), }
+
+
+class BlogForm(forms.ModelForm):
+    class Meta:
+        model = Blog
+        fields = ('author', 'title', 'tag_line', 'content', )
+        widgets = {'author': forms.TextInput(attrs={'class': 'form-control'}),
+                   'title': forms.TextInput(attrs={'class': 'form-control'}),
+                   'tag_line': forms.TextInput(attrs={'class': 'form-control'}),
+                   'content': forms.Textarea(attrs={'class': 'form-control'}), }

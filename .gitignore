@@ -12,7 +12,6 @@ venv/
 
 
 # Static folder at project root
-/static/
 vendor/
 assets/
 

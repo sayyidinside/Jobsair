@@ -18,11 +18,26 @@
     <div class="products">
       <div class="container">
         <div class="row">
+          {% if user.is_authenticated %}
+          <div class="col-md-10">
+            <div class="section-heading">
+              <h2>{{ blog.tag_line }}</h2>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="contact-form">
+              <form action="{% url 'blog_edit' pk=blog.pk %}">
+                <button type="submit" class="filled-button btn-block">Edit</button>
+              </form>
+            </div>
+          </div>
+          {% else %}
             <div class="col-md-12">
               <div class="section-heading">
-                <h2>Lorem ipsum dolor sit amet, consectetur.</h2>
+                <h2>{{ blog.tag_line }}</h2>
               </div>
             </div>
+          {% endif %}
 
             <div class="col-md-12">
               <h7>{{ blog.content | linebreaksbr }}</h7>

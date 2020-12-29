@@ -13,4 +13,6 @@ urlpatterns = [path('', views.index, name='index'),
                path('register/', views.register_user, name='register'),
                path('contact-us/', views.contact_us, name='contact_us'),
                path('jobs/new/', views.post_new, name='post_new'),
-               path('post/<int:pk>/edit/', views.post_edit, name='post_edit'), ]
+               path('post/<int:pk>/edit/', views.post_edit, name='post_edit'),
+               path('blogs/detail/new/', views.blog_new, name='blog_new'),
+               path('blogs/detail/<int:pk>/edit', views.blog_edit, name='blog_edit'), ]

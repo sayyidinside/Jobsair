@@ -1,7 +1,7 @@
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Blog
-from .forms import PostForm
+from .forms import PostForm, BlogForm
 
 
 # Create your views here.
@@ -56,7 +56,7 @@ def post_edit(request, pk):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail.html')
+            return redirect('post_detail',  pk=post.pk)
     else:
         form = PostForm(instance=post)
     return render(request, 'Jobsair_id/post_edit.html', {'form': form, 'post': post, 'state': state})
@@ -81,6 +81,35 @@ def blog_detail(request, pk):
     blog = get_object_or_404(Blog, pk=pk)  # error handling
     return render(request, 'Jobsair_id/blog-details.html', {'blog': blog,
                                                             'view': view})
+
+
+def blog_new(request):
+    state = 'NEW BLOG POST'
+    if request.method == 'POST':
+        form = BlogForm(request.POST)
+        if form.is_valid():
+            blog = form.save(commit=False)
+            blog.published_date = timezone.now()
+            blog.save()
+            return redirect('blog_detail', pk=blog.pk)
+    else:
+        form = BlogForm()
+        return render(request, 'Jobsair_id/blog_edit.html', {'form': form, 'state': state})
+
+
+def blog_edit(request, pk):
+    blog = get_object_or_404(Blog, pk=pk)
+    state = 'EDITING JOB POST'
+    if request.method == 'POST':
+        form = BlogForm(request.POST)
+        if form.is_valid():
+            blog = form.save(commit=False)
+            blog.published_date = timezone.now()
+            blog.save()
+            return redirect('blog_detail', pk=blog.pk)
+    else:
+        form = BlogForm(instance=blog)
+        return render(request, 'Jobsair_id/blog_edit.html', {'form': form, 'blog': blog, 'state': state})
 
 
 def terms(request):
