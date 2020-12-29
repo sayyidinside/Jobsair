@@ -62,14 +62,13 @@
                 </div>
               </div>
             </div>
-
-            <div class="form-group">
-              <h5>Lorem ipsum dolor sit amet</h5>
+            {% if user.is_authenticated %}
+            <div class="contact-form">
+              <form action="{% url 'blog_new' %}">
+                <button type="submit" class="filled-button btn-block">Create New Job Post</button>
+              </form>
             </div>
-
-            <p><a href="blog-details.html">Lorem ipsum dolor sit amet, consectetur adipisicing.</a></p>
-            <p><a href="blog-details.html">Et animi voluptatem, assumenda enim, consectetur quaerat!</a></p>
-            <p><a href="blog-details.html">Ducimus magni eveniet sit doloremque molestiae alias mollitia vitae.</a></p>
+            {% endif %}
           </div>
         </div>
       </div>
