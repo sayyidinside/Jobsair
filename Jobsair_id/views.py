@@ -1,5 +1,4 @@
 from django.contrib import messages
-from django.core import paginator
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Blog, Category
@@ -7,6 +6,8 @@ from .forms import PostForm, BlogForm, RegisterForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.db.models import Q
+from django.core.cache import cache
 
 
 # Create your views here.
@@ -28,13 +29,13 @@ def index(request):
 def post_list(request):
     posts = Post.objects.filter(
             published_date__lte=timezone.now()
-            ).order_by('published_date')
+            ).order_by('published_date').reverse()
     paginator = Paginator(posts, 12)
     page_number = request.GET.get('page', 1)
     page = paginator.get_page(page_number)
     return render(request,
                   'Jobsair_id/post_list.html',
-                  {'page': page,})
+                  {'page': page})
 
 
 def post_detail(request, pk):
@@ -196,10 +197,62 @@ def contact_us(request):
 
 
 def job_category(request, cats):
-    categories = Post.objects.filter(category=cats)
+    categories = Post.objects.filter(category=cats).order_by('published_date').reverse()
     paginator = Paginator(categories, 6)
     page_number = request.GET.get('page', 1)
     page = paginator.get_page(page_number)
     return render(request,
                   'Jobsair_id/post_category.html',
                   {'cats': cats, 'page': page})
+
+
+def post_search(request):
+    posts = Post.objects.filter(
+            published_date__lte=timezone.now()
+            ).order_by('published_date')
+    search = request.GET.get('data')
+    if search is not None:
+        if search != '' and search is not None:
+            cache.set('search', search)
+            posts = posts.filter(
+                    Q(title__icontains=search) |
+                    Q(company__icontains=search) |
+                    Q(category__icontains=search)).distinct()
+    else:
+        search = cache.get('search')
+        posts = posts.filter(
+                    Q(title__icontains=search) |
+                    Q(company__icontains=search) |
+                    Q(category__icontains=search)).distinct()
+
+    print(search)
+    print(posts)
+    paginator = Paginator(posts, 6)
+    page_number = request.GET.get('page', 1)
+    page = paginator.get_page(page_number)
+    return render(request, 'Jobsair_id/post_search.html', {'search': search, 'page': page})
+
+
+def blog_search(request):
+    blogs = Blog.objects.filter(
+            published_date__lte=timezone.now()
+            ).order_by('published_date').reverse()
+    search = request.GET.get('data')
+    if search is not None:
+        if search != '' and search is not None:
+            cache.set('search', search)
+            blogs = blogs.filter(
+                    Q(title__icontains=search) |
+                    Q(author__icontains=search) |
+                    Q(tag_line__icontains=search)).distinct()
+    else:
+        search = cache.get('search')
+        blogs = blogs.filter(
+                    Q(title__icontains=search) |
+                    Q(author__icontains=search) |
+                    Q(tag_line__icontains=search)).distinct()
+
+    paginator = Paginator(blogs, 6)
+    page_number = request.GET.get('page', 1)
+    page = paginator.get_page(page_number)
+    return render(request, 'Jobsair_id/blog_search.html', {'search': search, 'page': page})

@@ -4,13 +4,13 @@
 {% block title %} | Jobs{% endblock %}
 
 {% block content %}
-  <div class="page-heading contact-heading header-text" style="background-image: url({% static 'Jobsair_id/assets/images/heading-4-1920x500.jpg' %});">
+<div class="page-heading contact-heading header-text" style="background-image: url({% static 'Jobsair_id/assets/images/blog.png' %});">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="text-content">
-            <h4>JOBS LIST</h4>
-            <h2>{{ cats|title }} Category</h2>
+            <h4>SEARCH RESULT</h4>
+            <h2>"{{ search }}"</h2>
           </div>
         </div>
       </div>
@@ -18,12 +18,12 @@
   </div>
 
   <br>
-  <div class="products">
+  <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="row">
           {% for blog in page %}
-          <div class="col-md-6">
+          <div class="col-md-4">
             <div class="service-item">
               <img src="{% static 'Jobsair_id/assets/images/blog-1-370x270.jpeg' %}" class="img-fluid" alt=""></a>
 

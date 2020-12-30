@@ -37,17 +37,19 @@
     <div class="col-md-12">
       <div class="contact-form">
         <div class="container">
-          <div class="row">
-            <div class="col-11">
-              
-              <h4><input type="text" class="form-control" placeholder="Cari Lowongan, Perusahaan, atau Lokasi" aria-label="Cari Lowongan, Perusahaan, atau Lokasi" aria-describedby="basic-addon2"></h4>
-           
+          <form action="{% url 'post_search' %}" method="get">
+            <div class="row">
+              {% csrf_token %}
+              <div class="col-11">
+                
+                <h4><input type="text" name='data' class="form-control" placeholder="Cari Lowongan, Perusahaan, atau Lokasi" aria-label="Cari Lowongan, Perusahaan, atau Lokasi" aria-describedby="basic-addon2"></h4>
+             
+              </div>
+              <div class="col-1">
+                <button class="filled-button" type="submit">Go</button>
+              </div>
             </div>
-  
-            <div class="col-1">
-              <button class="filled-button" type="button">Go</button>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
