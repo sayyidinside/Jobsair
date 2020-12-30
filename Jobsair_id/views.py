@@ -1,10 +1,12 @@
 from django.contrib import messages
+from django.core import paginator
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Blog, Category
 from .forms import PostForm, BlogForm, RegisterForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -18,20 +20,28 @@ def index(request):
     blogs = Blog.objects.filter(
             published_date__lte=timezone.now()
             ).order_by('views').reverse()[:3]
-    return render(request, 'Jobsair_id/index.html', {'posts': posts,
-                                                     'blogs': blogs})
+    return render(request,
+                  'Jobsair_id/index.html',
+                  {'posts': posts, 'blogs': blogs})
 
 
 def post_list(request):
     posts = Post.objects.filter(
             published_date__lte=timezone.now()
             ).order_by('published_date')
-    return render(request, 'Jobsair_id/post_list.html', {'posts': posts})
+    paginator = Paginator(posts, 12)
+    page_number = request.GET.get('page', 1)
+    page = paginator.get_page(page_number)
+    return render(request,
+                  'Jobsair_id/post_list.html',
+                  {'page': page,})
 
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'Jobsair_id/post_detail.html', {'post': post})
+    return render(request,
+                  'Jobsair_id/post_detail.html',
+                  {'post': post})
 
 
 def post_new(request):
@@ -46,7 +56,9 @@ def post_new(request):
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm()
-        return render(request, 'Jobsair_id/post_edit.html', {'form': form, 'state': state})
+        return render(request,
+                      'Jobsair_id/post_edit.html',
+                      {'form': form, 'state': state})
 
 
 @login_required(login_url='login')
@@ -63,18 +75,27 @@ def post_edit(request, pk):
             return redirect('post_detail',  pk=post.pk)
     else:
         form = PostForm(instance=post)
-    return render(request, 'Jobsair_id/post_edit.html', {'form': form, 'post': post, 'state': state})
+    return render(request,
+                  'Jobsair_id/post_edit.html',
+                  {'form': form, 'post': post, 'state': state})
 
 
 def about_us(request):
-    return render(request, 'Jobsair_id/about-us.html', {})
+    return render(request,
+                  'Jobsair_id/about-us.html',
+                  {})
 
 
 def blog_list(request):
     blogs = Blog.objects.filter(
            published_date__lte=timezone.now()
            ).order_by('published_date').reverse()[:6]
-    return render(request, 'Jobsair_id/blog.html', {'blogs': blogs})
+    paginator = Paginator(blogs, 6)
+    page_number = request.GET.get('page', 1)
+    page = paginator.get_page(page_number)
+    return render(request,
+                  'Jobsair_id/blog.html',
+                  {'page': page})
 
 
 def blog_detail(request, pk):
@@ -83,8 +104,10 @@ def blog_detail(request, pk):
     view.save()
 
     blog = get_object_or_404(Blog, pk=pk)  # error handling
-    return render(request, 'Jobsair_id/blog-details.html', {'blog': blog,
-                                                            'view': view})
+    return render(request,
+                  'Jobsair_id/blog-details.html',
+                  {'blog': blog,
+                   'view': view})
 
 
 def blog_new(request):
@@ -98,7 +121,9 @@ def blog_new(request):
             return redirect('blog_detail', pk=blog.pk)
     else:
         form = BlogForm()
-        return render(request, 'Jobsair_id/blog_edit.html', {'form': form, 'state': state})
+        return render(request,
+                      'Jobsair_id/blog_edit.html',
+                      {'form': form, 'state': state})
 
 
 @login_required(login_url='login')
@@ -114,7 +139,9 @@ def blog_edit(request, pk):
             return redirect('blog_detail', pk=blog.pk)
     else:
         form = BlogForm(instance=blog)
-        return render(request, 'Jobsair_id/blog_edit.html', {'form': form, 'blog': blog, 'state': state})
+        return render(request,
+                      'Jobsair_id/blog_edit.html',
+                      {'form': form, 'blog': blog, 'state': state})
 
 
 def terms(request):
@@ -151,18 +178,28 @@ def register_user(request):
             if form.is_valid():
                 form.save()
                 user = form.cleaned_data.get('username')
-                messages.success(request, 'Account ' + user + ' has been created successfully')
+                messages.success(request,
+                                 'Account ' + user + ' has been created successfully')
                 return redirect('login')
             else:
                 messages.error(request, form.errors)
         form = RegisterForm()
-        return render(request, 'Jobsair_id/register.html', {'form': form})
+        return render(request,
+                      'Jobsair_id/register.html',
+                      {'form': form})
 
 
 def contact_us(request):
-    return render(request, 'Jobsair_id/contact-us.html', {})
+    return render(request,
+                  'Jobsair_id/contact-us.html',
+                  {})
 
 
 def job_category(request, cats):
     categories = Post.objects.filter(category=cats)
-    return render(request, 'Jobsair_id/post_category.html', {'cats': cats, 'category': categories})
+    paginator = Paginator(categories, 6)
+    page_number = request.GET.get('page', 1)
+    page = paginator.get_page(page_number)
+    return render(request,
+                  'Jobsair_id/post_category.html',
+                  {'cats': cats, 'page': page})

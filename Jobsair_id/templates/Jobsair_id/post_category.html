@@ -18,29 +18,57 @@
   </div>
 
   <br>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="row">
-        {% for post in category %}
-          <div class="col-md-3">
-            <div class="product-item">
-              <div class="down-content">
-                <a href="{% url 'post_detail' pk=post.pk %}"><h4>{{ post.title }}</h4></a>
-        
-                <h6><small>Rp {{ post.salary }}</small></h6>
-        
-                <h4><small><i class="fa fa-briefcase"></i> {{ post.category }} <br> <strong><i class="fa fa-building"></i> {{ post.company }}</strong></small></h4>
-        
-                <small>
-                     <strong title="Posted on"><i class="fa fa-calendar"></i> {{ post.published_date | date:'d F Y' }}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
-                     <strong title="Type"><i class="fa fa-file"></i> Contract</strong>
-                     <br>
-                     <strong title="Location"><i class="fa fa-map-marker"></i> {{ post.address|truncatechars:30 }}</strong>
-                </small>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          {% for post in page %}
+            <div class="col-md-4">
+              <div class="product-item">
+                <div class="down-content">
+                  <a href="{% url 'post_detail' pk=post.pk %}"><h4>{{ post.title }}</h4></a>
+          
+                  <h6><small>Rp {{ post.salary }}</small></h6>
+          
+                  <h4><small><i class="fa fa-briefcase"></i> {{ post.category }} <br> <strong><i class="fa fa-building"></i> {{ post.company }}</strong></small></h4>
+          
+                  <small>
+                       <strong title="Posted on"><i class="fa fa-calendar"></i> {{ post.published_date | date:'d F Y' }}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                       <strong title="Type"><i class="fa fa-file"></i> Contract</strong>
+                       <br>
+                       <strong title="Location"><i class="fa fa-map-marker"></i> {{ post.address|truncatechars:30 }}</strong>
+                  </small>
+                </div>
               </div>
             </div>
-          </div>
-        {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="products">
+    <div class="container">
+      <div class="col-md-12">
+          {% if page.paginator.num_pages > 1 %}
+            <ul class="pages">
+              {% if page.has_previous %}
+                <li><a href="?page=1">First</a></li>
+                <li><a href="?page={{ page.previous_page_number }}"><i class="fa fa-angle-double-left"></i></a></li>
+              {% endif %}
+              {% for i in page.paginator.page_range %}
+                {% if page.number == i %}
+                  <li class="active"><a href="#">{{ i }} <span class="sr-only">(current)</span></a></li>
+                {% elif page.number > i|add:"-3" and page.number < i|add:"+3"%}
+                  <li><a href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+              {% endfor %}
+              {% if page.has_next %}
+              <li><a href="?page={{ page.next_page_number }}"><i class="fa fa-angle-double-right"></i></a></li>
+              <li><a href="?page={{ page.paginator.num_pages }}">Last</a></li>
+              {% endif %}
+            </ul>
+          {% endif %}
       </div>
     </div>
   </div>
