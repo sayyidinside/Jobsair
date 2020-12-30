@@ -53,9 +53,9 @@
 
                 <li class="nav-item{% if request.resolver_match.url_name in 'post_list,post_detail,post_new,post_edit,job_category' %} active{% endif %}"><a class="nav-link" href="{% url 'post_list' %}">Jobs</a></li>
 
-                <li class="nav-item{% if request.resolver_match.url_name == 'about_us' %} active{% endif %}"><a class="nav-link" href="{% url 'about_us' %}">About us</a></li>
-
                 <li class="nav-item{% if request.resolver_match.url_name in 'blog_list,blog_detail,blog_new,blog_edit' %} active{% endif %}"><a class="nav-link" href="{% url 'blog_list' %}">Blog</a></li>
+               
+                <li class="nav-item{% if request.resolver_match.url_name == 'about_us' %} active{% endif %}"><a class="nav-link" href="{% url 'about_us' %}">About us</a></li>
 
                 <li class="nav-item{% if request.resolver_match.url_name == 'contact_us' %} active{% endif %}"><a class="nav-link" href="{% url 'contact_us' %}">Contact Us</a></li>
 

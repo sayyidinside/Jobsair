@@ -10,12 +10,18 @@
       <div class="owl-banner owl-carousel">
         <div class="banner-item-01">
           <div class="text-content">
-            <a href="{% url 'post_detail' pk=1 %}"><img src="{% static 'Jobsair_id/assets/images/slider-image-1-1920x600.png' %}" alt=""></a>
+            
+            <img src="{% static 'Jobsair_id/assets/images/job.png' %}" alt=""></a>
           </div>
         </div>
         <div class="banner-item-02">
           <div class="text-content">
             <a href="{% url 'post_detail' pk=5 %}"><img src="{% static 'Jobsair_id/assets/images/slider-image-2-1920x600.png' %}" alt=""></a>
+          </div>
+        </div>
+        <div class="banner-item-02">
+          <div class="text-content">
+            <a href="{% url 'post_detail' pk=1 %}"><img src="{% static 'Jobsair_id/assets/images/slider-image-1-1920x600.png' %}" alt=""></a>
           </div>
         </div>
         <div class="banner-item-03">
@@ -27,7 +33,24 @@
       </div>
     </div>
     <!-- Banner Ends Here -->
-
+    <br>
+    <div class="col-md-12">
+      <div class="contact-form">
+        <div class="container">
+          <div class="row">
+            <div class="col-11">
+              
+              <h4><input type="text" class="form-control" placeholder="Cari Lowongan, Perusahaan, atau Lokasi" aria-label="Cari Lowongan, Perusahaan, atau Lokasi" aria-describedby="basic-addon2"></h4>
+           
+            </div>
+  
+            <div class="col-1">
+              <button class="filled-button" type="button">Go</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <br>
     <div class="container">
       {% if user.is_authenticated %}
