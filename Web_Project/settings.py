@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as message
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -121,3 +122,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# Ovewrite message tag
+MESSAGE_TAGS = {message.ERROR: 'danger',
+                message.SUCCESS: 'primary'}

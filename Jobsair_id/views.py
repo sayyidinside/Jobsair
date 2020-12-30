@@ -3,6 +3,8 @@ from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Blog, Category
 from .forms import PostForm, BlogForm, RegisterForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -47,6 +49,7 @@ def post_new(request):
         return render(request, 'Jobsair_id/post_edit.html', {'form': form, 'state': state})
 
 
+@login_required(login_url='login')
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     state = 'EDITING JOB POST'
@@ -98,6 +101,7 @@ def blog_new(request):
         return render(request, 'Jobsair_id/blog_edit.html', {'form': form, 'state': state})
 
 
+@login_required(login_url='login')
 def blog_edit(request, pk):
     blog = get_object_or_404(Blog, pk=pk)
     state = 'EDITING JOB POST'
@@ -118,19 +122,41 @@ def terms(request):
 
 
 def login_user(request):
-    return render(request, 'Jobsair_id/Login.html', {})
+    if request.user.is_authenticated:
+        return redirect('index')
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('index')
+            else:
+                messages.error(request, 'Username or Password is incorrect')
+        return render(request, 'Jobsair_id/Login.html', {})
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('login')
 
 
 def register_user(request):
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            user = form.cleaned_data.get('username')
-            messages.info(request, 'Account ' + user + ' has been created successfully')
-            return redirect('login')
-    form = RegisterForm()
-    return render(request, 'Jobsair_id/register.html', {'form': form})
+    if request.user.is_authenticated:
+        return redirect('index')
+    else:
+        if request.method == 'POST':
+            form = RegisterForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('username')
+                messages.success(request, 'Account ' + user + ' has been created successfully')
+                return redirect('login')
+            else:
+                messages.error(request, form.errors)
+        form = RegisterForm()
+        return render(request, 'Jobsair_id/register.html', {'form': form})
 
 
 def contact_us(request):

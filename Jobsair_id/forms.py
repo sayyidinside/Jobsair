@@ -37,9 +37,11 @@ class BlogForm(forms.ModelForm):
 
 class RegisterForm(UserCreationForm):
     password1 = forms.CharField(
+        max_length=16,
         label="Password",
         widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}),)
     password2 = forms.CharField(
+        max_length=16,
         label="Confirm password",
         widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Retype Password'}),)
     check = forms.BooleanField(
