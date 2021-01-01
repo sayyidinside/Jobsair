@@ -1,0 +1,95 @@
+{% extends 'Jobsair_id/base.html' %}
+{% load static %}
+
+{% block title %} | Profile{% endblock %}
+
+{% block content %}
+  <div class="page-heading about-heading header-text" style="background-image: url({% static 'Jobsair_id/assets/images/heading-6-1920x500.jpg' %});">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="text-content">
+            <h2>{{ profile.member.company }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-form">
+    <div class="form-group">
+      {% if user.id == profile.id %}
+          <form action="">
+            <button type="submit" class="filled-button btn-block">Edit Profile</button>
+          </form>
+          <br>
+      {% endif %}
+  </div>
+</div>
+  <div class="call-to-action">
+    <div class="container">
+        <div class="col-md-12">
+          <div class="inner-content">
+            <div class="row">
+              <div class="col-md-10">
+                <h3>{{profile.member.company}}</h3>
+                <br>
+                <h4>
+                      <i class="fa fa-map-marker"></i>Location : Jakarta <br><br>
+                      <i class="fa fa-briefcase"></i>Industry : Entertainment <br><br>
+                      <i class="fa fa-phone"></i>Phone : {{ profile.member.phone }}<br><br>
+                      <i class="fa fa-link" aria-hidden="true"></i> Website : <a href="{{ post.comp_link }}">www.com</a>
+                </h4>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="products">
+    <div class="container">
+      <div class="form-group">
+        <h3>Overview</h3>
+      </div>
+      <h7>{{ profile.member.desc|linebreaksbr }}</h7>
+      <br>
+      <br>
+      <br>
+      <hr>
+
+      <h3>Jobs</h3>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+          {% for post in page %}
+            <div class="col-md-4">
+              <div class="product-item">
+                <div class="down-content">
+                  <a href="{% url 'post_detail' pk=post.pk %}"><h4>{{ post.title }}</h4></a>
+
+                  <h6><small>Rp {{ post.salary }}</small></h6>
+
+                  <h4>
+                    <small><a href="{% url 'job_category' post.category %}">
+                    <i class="fa fa-briefcase"></i> {{ post.category }} </a>
+                    <br>
+                    <strong><i class="fa fa-building"></i> {{ post.company }}</strong></small>
+                  </h4>
+
+                  <small>
+                       <strong title="Posted on"><i class="fa fa-calendar"></i> {{ post.published_date | date:'d F Y' }}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                       <strong title="Type"><i class="fa fa-file"></i> Contract</strong>
+                       <br>
+                       <strong title="Location"><i class="fa fa-map-marker"></i> {{ post.address|truncatechars:30 }}</strong>
+                  </small>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+{% endblock %}

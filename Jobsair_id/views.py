@@ -1,13 +1,14 @@
 from django.contrib import messages
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Blog, Category
+from .models import Post, Blog, Category, Member
 from .forms import PostForm, BlogForm, RegisterForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.core.cache import cache
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -256,3 +257,14 @@ def blog_search(request):
     page_number = request.GET.get('page', 1)
     page = paginator.get_page(page_number)
     return render(request, 'Jobsair_id/blog_search.html', {'search': search, 'page': page})
+
+
+def profile(request, id):
+    profile = get_object_or_404(User, id=id)
+    posts = Post.objects.filter(
+            author__username=profile.username
+            ).order_by('published_date').reverse()
+    paginator = Paginator(posts, 12)
+    page_number = request.GET.get('page', 1)
+    page = paginator.get_page(page_number)
+    return render(request, 'Jobsair_id/profile.html', {'profile': profile, 'page': page})
