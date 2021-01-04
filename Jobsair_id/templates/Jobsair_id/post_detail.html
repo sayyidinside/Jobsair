@@ -71,21 +71,20 @@
                 <p>
                   <span>Name</span>
                   <br>
-                  <strong>{{ post.author_id }}</strong>
+                  <strong>{{ post.author }}</strong>
                 </p>
                 <p>
                   <span>Phone</span>
                   <br>
-                  <strong>
-                    <a href="tel:123-456-789">123-456-789</a>
-                  </strong>
-                </p>
-                <p>
-                  <span>Mobile phone</span>
-                  <br>
-                  <strong>
-                    <a href="tel:456789123">456789123</a>
-                  </strong>
+                  {% if post.author.member.phone %}
+                    <strong>
+                      <a href="tel:{{ post.author.member.phone }}">{{ post.author.member.phone }}</a>
+                    </strong>
+                  {% else %}
+                    <strong>
+                      <a>unavailable</a>
+                    </strong>
+                  {% endif %}
                 </p>
                 <p>
                   <span>Email</span>
