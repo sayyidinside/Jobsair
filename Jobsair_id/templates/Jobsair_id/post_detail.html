@@ -89,16 +89,28 @@
                 <p>
                   <span>Email</span>
                   <br>
-                  <strong>
-                    <a href="mailto:{{ post.email }}">{{ post.email }}</a>
-                  </strong>
+                  {% if post.email %}
+                    <strong>
+                      <a href="mailto:{{ post.email }}">{{ post.email }}</a>
+                    </strong>
+                  {% else %}
+                    <strong>
+                      <a>unavailable</a>
+                    </strong>
+                  {% endif %}
                 </p>
                 <p>
                   <span>Website</span>
                   <br>
-                  <strong>
-                    <a href="{{ post.comp_link }}">{{ post.comp_link }}</a>
-                  </strong>
+                  {% if post.comp_link %}
+                    <strong>
+                      <a href="{{ post.comp_link }}">{{ post.comp_link }}</a>
+                    </strong>
+                  {% else %}
+                    <strong>
+                      <a>unavailable</a>
+                    </strong>
+                  {% endif %}
                 </p>
               </div>
             </div>
