@@ -30,7 +30,12 @@
           
                   <h6><small>Rp {{ post.salary }}</small></h6>
           
-                  <h4><small><i class="fa fa-briefcase"></i> {{ post.category }} <br> <strong><i class="fa fa-building"></i> {{ post.company }}</strong></small></h4>
+                  <h4><small><i class="fa fa-briefcase"></i> {{ post.category }} <br>
+                  {% if post.author.member.company %}
+                    <strong><i class="fa fa-building"></i> {{ post.author.member.company }}</strong></small>
+                  {% else %}
+                    <strong><i class="fa fa-building"></i> {{ post.company }}</strong></small>
+                  {% endif %}
           
                   <small>
                        <strong title="Posted on"><i class="fa fa-calendar"></i> {{ post.published_date | date:'d F Y' }}</strong> &nbsp;&nbsp;&nbsp;&nbsp;

@@ -34,10 +34,10 @@
                 <h3>{{profile.member.company}}</h3>
                 <br>
                 <h4>
-                      <i class="fa fa-map-marker"></i>Location : Jakarta <br><br>
-                      <i class="fa fa-briefcase"></i>Industry : Entertainment <br><br>
+                      <i class="fa fa-map-marker"></i>Location : {{ profile.member.city }} <br><br>
+                      <i class="fa fa-briefcase"></i>Industry : {{ profile.member.category }} <br><br>
                       <i class="fa fa-phone"></i>Phone : {{ profile.member.phone }}<br><br>
-                      <i class="fa fa-link" aria-hidden="true"></i> Website : <a href="{{ post.comp_link }}">www.com</a>
+                      <i class="fa fa-link" aria-hidden="true"></i> Website : <a href="{{ post.comp_link }}">{{ profile.member.website }}</a>
                 </h4>
               </div>
           </div>

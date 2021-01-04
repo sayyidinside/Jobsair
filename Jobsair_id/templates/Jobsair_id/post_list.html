@@ -79,7 +79,11 @@
                     <small><a href="{% url 'job_category' post.category %}">
                     <i class="fa fa-briefcase"></i> {{ post.category }} </a>
                     <br>
-                    <strong><i class="fa fa-building"></i> {{ post.company }}</strong></small>
+                    {% if post.author.member.company %}
+                      <strong><i class="fa fa-building"></i> {{ post.author.member.company }}</strong></small>
+                    {% else %}
+                      <strong><i class="fa fa-building"></i> {{ post.company }}</strong></small>
+                    {% endif %}
                   </h4>
 
                   <small>

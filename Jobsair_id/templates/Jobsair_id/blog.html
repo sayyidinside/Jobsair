@@ -79,7 +79,7 @@
                 </div>
               </form>
             </div>
-            {% if user.is_authenticated %}
+            {% if user.is_staff %}
             <div class="contact-form">
               <form action="{% url 'blog_new' %}">
                 <button type="submit" class="filled-button btn-block">Create New Job Post</button>
