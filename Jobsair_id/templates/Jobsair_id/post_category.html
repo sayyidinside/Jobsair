@@ -17,24 +17,35 @@
     </div>
   </div>
 
-  <br>
-  <div class="products">
+  <div class="products container">
     <div class="row">
       <div class="col-md-12">
         <div class="row">
-          {% for blog in page %}
-          <div class="col-md-6">
-            <div class="service-item">
-              <img src="{% static 'Jobsair_id/assets/images/blog-1-370x270.jpeg' %}" class="img-fluid" alt=""></a>
-
+          {% for post in page %}
+          <div class="col-md-4">
+            <div class="product-item">
               <div class="down-content">
-                <h4><a href="{% url 'blog_detail' pk=blog.pk %}">{{ blog.title }}</a></h4>
+                <a href="{% url 'post_detail' pk=post.pk %}"><h4>{{ post.title }}</h4></a>
 
-                <p style="margin: 0;"> {{ blog.author }} <br>{{ blog.published_date | date:'d F Y - H:i e'}} &nbsp;&nbsp;|&nbsp;&nbsp; {{ blog.views }}</p>
+                <h6><small>Rp {{ post.salary }}</small></h6>
+
+                <h4>
+                  <small><a href="{% url 'job_category' post.category %}">
+                  <i class="fa fa-briefcase"></i> {{ post.category }} </a>
+                  <br>
+                  <strong><i class="fa fa-building"></i> {{ post.company }}</strong></small>
+                </h4>
+
+                <small>
+                     <strong title="Posted on"><i class="fa fa-calendar"></i> {{ post.published_date | date:'d F Y' }}</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                     <strong title="Type"><i class="fa fa-file"></i> Contract</strong>
+                     <br>
+                     <strong title="Location"><i class="fa fa-map-marker"></i> {{ post.address|truncatechars:30 }}</strong>
+                </small>
               </div>
             </div>
           </div>
-          {% endfor %}
+        {% endfor %}
         </div>
       </div>
     </div>
